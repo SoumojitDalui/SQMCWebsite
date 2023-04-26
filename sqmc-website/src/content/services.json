@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Gap Analysis",
+        "backgroundImage": "/services/gap-analysis.jpg",
+        "description": "It is a process of identifying gaps between the current state and the desired state in terms of ISO standards, which helps in determining the scope of work required for certification.",
+        "href": "/services/gap-analysis"
+    },
+    {
+        "title": "Documentation",
+        "backgroundImage": "/services/documentation.jpg",
+        "description": "This includes creating necessary documents like policies, procedures, and work instructions as per ISO standards to establish and maintain a quality management system.",
+        "href": "/services/documentation"
+    },
+    {
+        "title": "System Implementation",
+        "backgroundImage": "/services/system-implementation.jpg",
+        "description": "The implementation of ISO standards involves the establishment of a quality management system that is compliant with the ISO standard requirements.",
+        "href": "/services/system-implementation"
+    },
+    {
+        "title": "Internal Audit",
+        "backgroundImage": "/services/internal-audit.jpg",
+        "description": "The internal audit is a process of evaluating the effectiveness of the implemented quality management system to identify areas for improvement before the external certification audit.",
+        "href": "/services/internal-audit"
+    },
+    {
+        "title": "Certification",
+        "backgroundImage": "/services/certification.jpg",
+        "description": "Once the organization has been deemed compliant with the ISO standard requirements, they can undergo an external certification audit by an accredited certification body to receive certification.",
+        "href": "/services/certification"
+    },
+    {
+        "title": "Training",
+        "backgroundImage": "/services/training.jpg",
+        "description": "It is crucial to provide necessary training to the employees regarding the ISO standard requirements and quality management system procedures to ensure proper implementation and maintenance of the system.",
+        "href": "/services/training"
+    }
+]

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Script from 'next/script'
+import Link from 'next/link'
 
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -7,7 +8,7 @@ import { Footer } from '@/components/Footer'
 import team from '@/content/team.json'
 import reasons from '@/content/whyus.json'
 import items from '@/content/carousel.json'
-import Link from 'next/link'
+import services from '@/content/services.json'
 
 const Carousel = () => {
   const calculateBackward = (id: number) => {
@@ -34,10 +35,12 @@ const Carousel = () => {
             <div className="hero min-h-screen" style={{ backgroundImage: `url(${item.backgroundImage})` }}>
               <div className="hero-overlay bg-opacity-60"></div>
               <div className="hero-content text-center text-neutral-content">
-                <div className="max-w-md">
-                  <h1 className="mb-5 text-5xl font-bold">{item.title}</h1>
-                  <p className="mb-5">{item.message}</p>
-                  <Link href="#why-us"><button className="btn btn-primary">{item.buttonText}</button></Link>
+                <div className="max-w-screen-lg">
+                  <h1 className="mb-5 text-5xl md:text-6xl lg:text-7xl font-bold">{item.title}</h1>
+                  {item.messages.map((message) => (
+                    <p className="mb-5">{(message)}</p>
+                  ))}
+                  {/* <Link href="#why-us"><button className="btn btn-primary">{item.buttonText}</button></Link> */}
                 </div>
               </div>
             </div>
@@ -55,8 +58,10 @@ const Carousel = () => {
               <div className="hero-overlay bg-opacity-60"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
-                  <h1 className="mb-5 text-5xl font-bold">{item.title}</h1>
-                  <p className="mb-5">{item.message}</p>
+                  <h1 className="mb-5 text-5xl md:text-6xl lg:text-7xl font-bold">{item.title}</h1>
+                  {item.messages.map((message) => (
+                    <p className="mb-5">{(message)}</p>
+                  ))}
                   <Link href="#why-us"><button className="btn btn-primary">{item.buttonText}</button></Link>
                 </div>
               </div>
@@ -65,6 +70,47 @@ const Carousel = () => {
         ))}
       </div>
     </>
+  )
+}
+
+const Services = () => {
+  return (
+    <>
+      <h1 className='text-center text-5xl md:text-6xl lg:text-7xl font-bold mt-20 mb-10'>Services</h1>
+      <div className="max-w-screen mx-auto px-2 grid grid-cols-1 md:grid-cols-3 gap-2 justify-between">
+        {services.map((service) => (
+          <div className="card bg-base-100 shadow-xl image-full mx-auto">
+            <figure><Image src={service.backgroundImage} height={786} width={1723} alt="Gap Analysis" /></figure>
+            <div className="card-body">
+              <h2 className="card-title">{service.title}</h2>
+              <p>{service.description}</p>
+              <div className="card-actions">
+                <Link href={service.href}><button className="btn btn-primary">Learn More</button></Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  )
+}
+
+const WhyChooseUs = () => {
+  return (
+    <div id="why-us" className="w-screen bg-base-100 text-gray-800 my-10">
+      <h1 className='text-center pt-10 text-5xl md:text-6xl lg:text-7xl font-bold my-10'>Why Choose Us?</h1>
+      <div className="max-w-screen mx-auto px-2 grid grid-cols-1 md:grid-cols-2 gap-2 justify-between">
+        {reasons.map((reason) => (
+          <div className="card bg-base-100 shadow-xl">
+            <figure><Image src={reason.backgroundImage} height={786} width={1723} className='w-full' alt="Experienced team" /></figure>
+            <div className="card-body">
+              <h2 className="card-title">{reason.title}</h2>
+              <p className='text-justify'>{reason.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -90,25 +136,6 @@ const AboutUs = () => {
         </div>
       </div>
     </>
-  )
-}
-
-const WhyChooseUs = () => {
-  return (
-    <div id="why-us" className="w-screen py-8 bg-base-100 text-gray-800 z-50">
-      <h1 className='text-center text-5xl md:text-6xl lg:text-7xl font-bold my-10'>Why Choose Us?</h1>
-      <div className="max-w-screen mx-auto px-2 grid grid-cols-1 md:grid-cols-2 gap-2 justify-between">
-        {reasons.map((reason) => (
-          <div className="card bg-base-100 shadow-xl">
-            <figure><Image src={reason.backgroundImage} height={786} width={1723} className='w-full' alt="Experienced team" /></figure>
-            <div className="card-body">
-              <h2 className="card-title">{reason.title}</h2>
-              <p className='text-justify'>{reason.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
   )
 }
 
@@ -140,6 +167,7 @@ export default function Home() {
       <Script strategy="lazyOnload" src={process.env.NEXT_PUBLIC_TAWK_CONNECT_URL} />
       <Navbar />
       <Carousel />
+      <Services />
       <WhyChooseUs />
       <AboutUs />
       <ConfusedContact />

@@ -1,16 +1,22 @@
 [
     {
         "id": "1",
-        "backgroundImage": "/dylan-gillis-KdeqA3aTnBY-unsplash.jpg",
+        "backgroundImage": "/carousel/dylan-gillis-KdeqA3aTnBY-unsplash.jpg",
         "title": "Welcome to SQMC India!",
-        "message": "We are a team of experts dedicated to helping organizations achieve ISO certification. Our mission is to provide top-notch services and guidance to make the ISO certification process as seamless and stress-free as possible.",
+        "messages": [
+            "We are a team of experts dedicated to helping organizations achieve ISO certification. Our mission is to provide top-notch services and guidance to make the ISO certification process as seamless and stress-free as possible.",
+            "Whether you're new to ISO certification or looking to renew your certification, we have the knowledge and experience to guide you every step of the way. Our team of experts will work with you to understand your specific needs and create a customized plan to help you achieve your goals."
+        ],
         "buttonText": "Get Started"
     },
     {
         "id": "2",
-        "backgroundImage": "/carl-heyerdahl-KE0nC8-58MQ-unsplash.jpg",
+        "backgroundImage": "/carousel/carl-heyerdahl-KE0nC8-58MQ-unsplash.jpg",
         "title": "Welcome to SQMC India!",
-        "message": "We are a team of experts dedicated to helping organizations achieve ISO certification. Our mission is to provide top-notch services and guidance to make the ISO certification process as seamless and stress-free as possible.",
+        "messages": [
+            "We are a team of experts dedicated to helping organizations achieve ISO certification. Our mission is to provide top-notch services and guidance to make the ISO certification process as seamless and stress-free as possible.",
+            "Whether you're new to ISO certification or looking to renew your certification, we have the knowledge and experience to guide you every step of the way. Our team of experts will work with you to understand your specific needs and create a customized plan to help you achieve your goals."
+        ],
         "buttonText": "Get Started"
     }
 ]

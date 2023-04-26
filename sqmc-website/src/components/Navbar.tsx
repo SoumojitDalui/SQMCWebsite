@@ -11,7 +11,7 @@ export const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-50">
-                            <li><a>Home</a></li>
+                            <li><Link href="/">Home</Link></li>
                             <li><a>Contact</a></li>
                             <li>
                                 <Link href="/services">
@@ -40,7 +40,7 @@ export const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden sm:flex">
                     <ul className="menu menu-horizontal rounded-box px-2 z-50">
-                        <li><a>Home</a></li>
+                        <li><Link href="/">Home</Link></li>
                         <li tabIndex={0}>
                             <Link href="/services">Services</Link>
                             <ul className="p-2 bg-white">

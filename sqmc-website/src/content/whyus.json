@@ -1,22 +1,22 @@
 [
     {
         "title": "Experienced team of experts",
-        "backgroundImage": "/team-experts.jpg",
+        "backgroundImage": "/whyus/team-experts.jpg",
         "description": "Our team of experts has extensive experience in ISO certification, and we have helped many organizations achieve certification. Our team members possess in-depth knowledge and skills in the ISO standards and are committed to providing our clients with top-notch consulting and training services. We keep ourselves updated with the latest trends and changes in the industry, allowing us to deliver the best possible solutions to our clients. With our team of experts by your side, you can rest assured that your ISO certification journey will be smooth, stress-free, and successful."
     },
     {
         "title": "Customized approach",
-        "backgroundImage": "/approach.jpg",
+        "backgroundImage": "/whyus/approach.jpg",
         "description": "We understand that every organization is unique, and we work with you to create a customized plan that meets your specific needs. Our team is committed to providing personalized services that cater to your business requirements. We take the time to understand your goals and challenges, and then develop a plan that is tailored to your organization. Our customized approach ensures that you receive the support you need to achieve your certification goals efficiently and effectively."
     },
     {
         "title": "Affordable pricing",
-        "backgroundImage": "/pricing.jpg",
+        "backgroundImage": "/whyus/pricing.jpg",
         "description": "We believe that ISO certification should be accessible to all organizations, and we offer affordable pricing to make the process as stress-free as possible. Our goal is to help organizations of all sizes and budgets achieve ISO certification without compromising on the quality of service we provide. We understand the importance of ISO certification for the growth and sustainability of your business, and we strive to make the process as seamless and efficient as possible. With our affordable pricing and commitment to quality, you can trust us to help you achieve ISO certification and take your business to the next level."
     },
     {
         "title": "Ongoing support",
-        "backgroundImage": "/support.jpg",
+        "backgroundImage": "/whyus/support.jpg",
         "description": "We don't just help you achieve certification, we also provide ongoing support to help you maintain your certification over time. Our team is always available to answer any questions you may have and provide guidance as needed. We also offer internal audits to ensure that your organization is meeting all necessary requirements, as well as training to help your staff understand and implement ISO standards. With our ongoing support, you can feel confident in your certification and focus on growing your business."
     }
 ]
