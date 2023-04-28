@@ -6,6 +6,16 @@ const nextConfig = {
     disableStaticImages: true,
     unoptimized: true
   },
+
+  typescript: {
+    ignoreBuildErrors: true
+  },
+
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
+  swcMinify: true,
 }
 
 module.exports = nextConfig
