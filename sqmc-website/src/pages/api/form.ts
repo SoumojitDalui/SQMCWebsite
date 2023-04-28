@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         <p><strong>Organization Name:</strong> ${value.orgname}</p>
         <p><strong>Type of Certification:</strong> ${value.selectedTags.join(', ')}</p>
         <p><strong>Number of employees:</strong> ${value.numemp}</p>
-        <p><strong>Additional Comments:</strong> ${value.additionalComments}</p>
+        // <p><strong>Additional Comments:</strong> ${value.additionalComments}</p>
       `,
     };
 
