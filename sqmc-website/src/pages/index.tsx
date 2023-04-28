@@ -1,14 +1,14 @@
 import Image from 'next/image'
-import Script from 'next/script'
 import Link from 'next/link'
+import Head from 'next/head'
 
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 
-import team from '@/content/team.json'
-import reasons from '@/content/whyus.json'
-import items from '@/content/carousel.json'
-import services from '@/content/services.json'
+import team from '@/content/home/team.json'
+import reasons from '@/content/home/whyus.json'
+import items from '@/content/home/carousel.json'
+import services from '@/content/home/services.json'
 
 const Carousel = () => {
   const calculateBackward = (id: number) => {
@@ -36,9 +36,9 @@ const Carousel = () => {
               <div className="hero-overlay bg-opacity-60"></div>
               <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-screen-lg">
-                  <h1 className="mb-5 text-5xl md:text-6xl lg:text-7xl font-bold">{item.title}</h1>
+                  <h1 className="mb-8 text-5xl md:text-6xl lg:text-7xl font-bold">{item.title}</h1>
                   {item.messages.map((message) => (
-                    <p className="mb-5">{(message)}</p>
+                    <div className="mb-5"><div dangerouslySetInnerHTML={{ __html: message }} /></div>
                   ))}
                   {/* <Link href="#why-us"><button className="btn btn-primary">{item.buttonText}</button></Link> */}
                 </div>
@@ -60,7 +60,7 @@ const Carousel = () => {
                 <div className="max-w-md">
                   <h1 className="mb-5 text-5xl md:text-6xl lg:text-7xl font-bold">{item.title}</h1>
                   {item.messages.map((message) => (
-                    <p className="mb-5">{(message)}</p>
+                    <div className="mb-5"><div dangerouslySetInnerHTML={{ __html: message }} /></div>
                   ))}
                   <Link href="#why-us"><button className="btn btn-primary">{item.buttonText}</button></Link>
                 </div>
@@ -163,8 +163,10 @@ const ConfusedContact = () => {
 
 export default function Home() {
   return (
-    <main>
-      <Script strategy="lazyOnload" src={process.env.NEXT_PUBLIC_TAWK_CONNECT_URL} />
+    <>
+      <Head>
+        <title>SQMC India</title>
+      </Head>
       <Navbar />
       <Carousel />
       <Services />
@@ -172,6 +174,6 @@ export default function Home() {
       <AboutUs />
       <ConfusedContact />
       <Footer />
-    </main>
+    </>
   )
 }
