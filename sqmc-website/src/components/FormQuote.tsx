@@ -3,35 +3,43 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Select from "react-select";
 import axios from "axios";
+import { useRouter } from "next/router";
+
 
 import certificatetagOptions from "@/content/certificateTags.json"
 import serviceTagOptions from "@/content/serviceTags.json"
 
-export interface FormValues {
-    name: string;
-    email: string;
-    phoneno: string;
-    orgname: string;
-    selectedcertificatetags: any;
-    selectedservicestags: any;
-    numemp: string;
-    additionalComments: string;
-}
+// export interface FormValues {
+//     name: string;
+//     email: string;
+//     phoneno: string;
+//     orgname: string;
+//     selectedcertificatetags: any;
+//     selectedservicestags: any;
+//     numemp: string;
+//     additionalComments: string;
+// }
 
-interface MyComponentProps {
-    onSubmit: (data: FormValues) => void
-}
+// interface MyComponentProps {
+//     onSubmit: (data: FormValues) => void
+// }
 
-export const FormQuote: React.FC<MyComponentProps> = ({ onSubmit }) => {
-    const [stageSubmission, setStageSubmission] = useState(false);
+// export const FormQuote: React.FC<MyComponentProps> = ({ onSubmit }) => {
+export const FormQuote = () => {
+    const router = useRouter()
+    const pageName = router.pathname.split('/')[1]
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isNotSubmitted, setIsNotSubmitted] = useState(false);
 
     const [initialValues, setInitialValues] = useState({
         name: "",
         email: "",
         phoneno: "",
         orgname: "",
-        selectedcertificatetags: [],
         selectedservicestags: [],
+        selectedcertificatetags: [],
         numemp: '',
         additionalComments: "",
         // deadline: "",
@@ -54,14 +62,14 @@ export const FormQuote: React.FC<MyComponentProps> = ({ onSubmit }) => {
         orgname: Yup
             .string()
             .required('Organization Name is required'),
-        selectedcertificatetags: Yup
-            .array()
-            .min(1, 'Atleast one certificate is required')
-            .required('Certificate is required'),
         selectedservicestags: Yup
             .array()
             .min(1, 'Atleast one service is required')
             .required('Service is required'),
+        selectedcertificatetags: Yup
+            .array()
+            .min(1, 'Atleast one certificate is required')
+            .required('Certificate is required'),
         numemp: Yup
             .number()
             .min(1, 'Atleast one employee is required')
@@ -86,18 +94,51 @@ export const FormQuote: React.FC<MyComponentProps> = ({ onSubmit }) => {
         //     }),
     });
 
-    const handleSubmit = (values: FormValues) => {
-        // try {
-        //     await axios.post("/api/form", { ...values, service: service_type });
-        //     console.log("Form submitted successfully.");
-        // } catch (error) {
-        //     console.error(error);
-        // }
-        onSubmit(values)
+    const successModal = () => {
+        return (
+            <div className="modal modal-open modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Thank You for Your Submission!</h3>
+                    <p className="py-4">Your form has been successfully submitted. Our team will review your information and contact you shortly via the email and/or phone number provided to discuss your needs in more detail.</p>
+                    <div className="modal-action">
+                        <label htmlFor="my-modal-6" className="btn btn-success" onClick={() => setIsSubmitted(false)}>Close</label>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    const errorModal = () => {
+        return (
+            <div className="modal modal-open modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Error Encountered</h3>
+                    <p className="py-4">We're sorry, but there was an error encountered while trying to submit your form. Please review the information you entered and ensure that all required fields are completed correctly. If you continue to experience issues, please contact our team using the information below for assistance.</p>
+                    <div className="modal-action">
+                        <label htmlFor="my-modal-6" className="btn btn-error" onClick={() => setIsNotSubmitted(false)}>Close</label>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    const handleSubmit = async (values: object, { resetForm }: any) => {
+        setIsLoading(true)
+        try {
+            await axios.post("/api/form", { pageName, ...values });
+            setIsSubmitted(true);
+            resetForm();
+        } catch (error) {
+            setIsNotSubmitted(true);
+        }
+        // onSubmit(values)
+        setIsLoading(false)
     };
 
     return (
         <>
+            {isSubmitted ? successModal() : null}
+            {isNotSubmitted ? errorModal() : null}
             <div className="hero max-w-screen-2xl mx-auto bg-gradient-to-b from-slate-900 to-white bg-opacity-10 rounded-xl">
                 <div className="hero-overlay rounded-xl"></div>
                 <div className="flex flex-col w-full">
@@ -265,7 +306,10 @@ export const FormQuote: React.FC<MyComponentProps> = ({ onSubmit }) => {
                                                     props.errors.name && props.touched.name ||
                                                     props.errors.selectedcertificatetags && props.touched.selectedcertificatetags ?
                                                     "btn btn-disabled" : "btn btn-primary"
-                                            }>Submit</button>
+                                            } disabled={isLoading}>{isLoading ?
+                                                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                                                    <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                                </div> : 'Submit'}</button>
                                         </div>
                                         {/* <div className="grid grid-cols-11 pb-1">
                             <label className="col-start-6 ml-auto mr-auto" htmlFor="isPriority">
