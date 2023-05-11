@@ -62,7 +62,7 @@ const Carousel = () => {
                   {item.messages.map((message) => (
                     <div className="mb-5"><div dangerouslySetInnerHTML={{ __html: message }} /></div>
                   ))}
-                  <Link href="#why-us"><button className="btn btn-primary">{item.buttonText}</button></Link>
+                  {/* <Link href="#why-us"><button className="btn btn-primary">{item.buttonText}</button></Link> */}
                 </div>
               </div>
             </div>
